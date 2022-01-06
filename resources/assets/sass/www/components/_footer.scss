@@ -1,0 +1,18 @@
+.subscribe-wrapper {
+  position: relative;
+  text-align: center;
+  background-color: #ddd;
+
+  h1 {
+    margin-top: 0;
+    font-size: $font-size-h2;
+  }
+
+  .form-inline {
+    width: 100%;
+
+    @include breakpoint($screen-xs2) {
+      width: 50%;
+    }
+  }
+}

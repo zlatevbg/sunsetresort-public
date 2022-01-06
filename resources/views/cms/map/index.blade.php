@@ -1,0 +1,29 @@
+@extends(\Locales::getNamespace() . '.master')
+
+@section('content')
+    @include(\Locales::getNamespace() . '/shared.errors')
+
+    @if (isset($datatables) && count($datatables) > 0)
+        @include(\Locales::getNamespace() . '/partials.datatables')
+    @endif
+@endsection
+
+@section('jsFiles')
+    jsFiles.push('{{ \App\Helpers\autover('/js/' . \Locales::getNamespace() . '/vendor/ckfinder/ckfinder.js') }}');
+    jsFiles.push('{{ \App\Helpers\autover('/js/' . \Locales::getNamespace() . '/vendor/ckeditor/ckeditor.js') }}');
+    jsFiles.push('{{ \App\Helpers\autover('/js/' . \Locales::getNamespace() . '/vendor/jquery-ui.min.js') }}');
+    jsFiles.push('{{ \App\Helpers\autover('/js/' . \Locales::getNamespace() . '/vendor/jquery.multiselect.js') }}');
+    jsFiles.push('{{ \App\Helpers\autover('/js/' . \Locales::getNamespace() . '/vendor/leaflet.js') }}');
+    jsFiles.push('{{ \App\Helpers\autover('/js/' . \Locales::getNamespace() . '/vendor/leaflet.extra-markers.js') }}');
+    {{--jsFiles.push('https://maps.googleapis.com/maps/api/js?key=AIzaSyAEMMm25ehdCNH61wZ6tVkwvDG_SY8pZEY&language={{ \Locales::getCurrent() }}');--}}
+
+    @parent
+@endsection
+
+@if (isset($datatables) && count($datatables) > 0)
+@section('script')
+    unikat.callback = function() {
+        this.datatables({!! json_encode($datatables) !!});
+    };
+@endsection
+@endif

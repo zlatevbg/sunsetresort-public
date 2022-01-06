@@ -1,0 +1,1673 @@
+@import 'vendor/breakpoint';
+@import 'vendor/susy';
+@import 'components/mixins';
+
+$susy: (
+  columns: 12,
+  gutters: 1/4,
+  gutter-position: after,
+);
+
+$max-width: 78.75em; /* 1260/16 */
+$z-index-top: 9999;
+$imgPath: '/img/www/';
+
+$selection-color: lighten(#0da3ed, 20%);
+$brand-secondary: #d2ab67;
+$accent-primary: #e32f55;
+$accent-secondary: #e2a749;
+$background-primary: #f7f0ed;
+$background-secondary: #f0f2f2;
+
+@import 'components/reset';
+@import 'vendor/bootstrap';
+@import 'vendor/magnific-popup';
+@import 'vendor/jquery-ui';
+@import 'vendor/multiselect';
+@import 'vendor/slider-pro';
+@import 'vendor/leaflet';
+@import 'vendor/leaflet.extra-markers';
+@import 'vendor/cookieconsent';
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Preload images */
+body::after {
+  content: url($imgPath + 'loading.gif');
+  display: none;
+}
+
+@import 'components/layout';
+@import 'components/ajax';
+@import 'components/forms';
+@import 'components/dropdown';
+@import 'components/header';
+@import 'components/nav';
+@import 'components/footer';
+@import 'components/magnific-popup';
+@import 'components/slider';
+@import 'components/qtip';
+
+@include bg-variant('.bg-secondary', $brand-secondary);
+
+.content-wrapper {
+  margin: 0 auto;
+  max-width: $max-width;
+  padding: 1.25em 0.625em; /* 20/16 */ /* 10/16 */
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include breakpoint($screen-md1) {
+    display: block;
+  }
+}
+
+a,
+label,
+div {
+  > .sub-text {
+    font-size: $font-size-h5;
+    margin-left: 0.3125em; /* 5/16 */
+    color: $gray-light;
+  }
+}
+
+ul {
+  list-style-type: disc;
+}
+
+.glyphicon-left {
+  margin-right: 0.625em; /* 10/16 */
+}
+
+.glyphicon-right {
+  margin-left: 0.625em; /* 10/16 */
+}
+
+.tooltip {
+  display: inline-block;
+
+  &.tooltip-right {
+    margin-left: 6px;
+  }
+
+  > .glyphicon {
+    font-size: $font-size-h4;
+    color: $brand-secondary;
+  }
+}
+
+.tooltip-content {
+  display: none;
+}
+
+.tooltip-content-small {
+  font-size: $font-size-small;
+}
+
+.text-small {
+  font-size: $font-size-small;
+}
+
+.alert-messages {
+  &.absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    max-width: $max-width;
+  }
+
+  > .alert {
+    margin: $form-group-margin-bottom 0;
+    font-size: $font-size-h5;
+    text-align: left;
+
+    > ul {
+      padding: 0;
+      list-style: none;
+
+      > li {
+        margin-top: 0.3125em; /* 5/16 */
+      }
+    }
+  }
+
+  .glyphicon {
+    margin-right: 0.3125em; /* 5/16 */
+  }
+}
+
+div.dots {
+  margin: 0 auto 1.25em; /* 20/16 */
+  text-align: center;
+
+  > span {
+    display: inline-block;
+    border-radius: 50%;
+    width: 0.5em; /* 8/16 */
+    height: 0.5em; /* 8/16 */
+    margin: 0 0.1875em; /* 3/16 */
+
+    &:nth-of-type(1) {
+      background-color: $brand-primary;
+    }
+
+    &:nth-of-type(2) {
+      background-color: $accent-primary;
+    }
+
+    &:nth-of-type(3) {
+      background-color: $brand-secondary;
+    }
+
+    &:nth-of-type(4) {
+      background-color: $accent-secondary;
+    }
+  }
+}
+
+.table-restaurants {
+  font-size: 0.9em;
+}
+
+.article,
+.cke_editable {
+  @include clearfix;
+
+  > h1 {
+    margin-bottom: 0;
+    color: $brand-primary;
+    text-align: center;
+    font-size: $font-size-h2;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .articles {
+    display: flex;
+    margin: 1em auto 0;
+    flex-direction: column;
+    text-align: center;
+    max-width: 620px;
+    background-color: $background-secondary;
+
+    @include breakpoint($screen-sm) {
+      max-width: none;
+      width: 49%;
+    }
+
+    @include breakpoint($screen-md1) {
+      width: 100%;
+      text-align: left;
+      flex-direction: row;
+      margin-top: 3.125em; /* 50/16 */
+    }
+
+    &:nth-child(even) {
+      @include breakpoint($screen-sm) {
+        margin-left: 2%;
+      }
+
+      @include breakpoint($screen-md1) {
+        margin-left: 0;
+        flex-direction: row-reverse;
+      }
+    }
+
+    > div {
+      width: 100%;
+
+      @include breakpoint($screen-md1) {
+        width: 50%;
+      }
+    }
+
+    .img {
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    .details {
+      padding: 1.25em; /* 20/16 */
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  table {
+    @extend .table, .table-bordered;
+
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+
+    @include breakpoint($screen-xs2) {
+      display: table;
+      overflow-x: visible;
+    }
+
+    &.striped {
+      @extend .table-striped;
+    }
+  }
+
+  th > img {
+    margin-right: 0.625em; /* 10/16 */
+  }
+
+  .text {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.cke_editable {
+  padding: 0 1em;
+}
+
+.text {
+  text-align: justify;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.info-wrapper {
+  background-color: $background-primary;
+
+  h1 {
+    margin-bottom: 0;
+    color: $brand-primary;
+    text-align: center;
+    font-size: $font-size-h3;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include clearfix;
+
+    @include breakpoint($screen-md2) {
+      display: table;
+      table-layout: fixed;
+    }
+
+    &.info-links {
+      display: none;
+
+      @include breakpoint($screen-md2) {
+        display: table;
+      }
+    }
+
+    > li {
+      text-align: center;
+      height: 120px;
+
+      @include span(6);
+
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+
+      @include breakpoint($screen-xs1) {
+        @include span(4);
+
+        &:nth-child(2n) {
+          margin-right: gutter();
+        }
+
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+      }
+
+      @include breakpoint($screen-xs2) {
+        @include span(3);
+
+        &:nth-child(3n) {
+          margin-right: gutter();
+        }
+
+        &:nth-child(4n) {
+          margin-right: 0;
+        }
+      }
+
+      @include breakpoint($screen-md2) {
+        height: auto;
+        width: 100%;
+        padding: 0 1.25em; /* 20/16 */
+        float: none;
+        margin: 0;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      > a {
+        text-decoration: none;
+        color: darken($accent-secondary, 20%);
+        text-transform: uppercase;
+        font-size: $font-size-small;
+
+        &::after {
+          display: block;
+          content: attr(data-name);
+
+          @include breakpoint($screen-md2) {
+            content: '';
+          }
+        }
+      }
+    }
+  }
+}
+
+div.info-download {
+  margin-bottom: 1.25em; /* 20/16 */
+  text-align: center;
+
+  img {
+    margin-right: 0.625em; /* 10/16 */
+  }
+}
+
+.offers-wrapper {
+  h1 {
+    margin-bottom: 0;
+    color: $brand-primary;
+    text-align: center;
+    font-size: $font-size-h3;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .offers {
+    text-align: center;
+
+    @include clearfix;
+
+    > article {
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 10px;
+
+      @include breakpoint($screen-xs2) {
+        @include span(6);
+
+        margin-bottom: 0;
+
+        &:last-child {
+          @include last;
+        }
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .offer-content {
+        background-color: $background-primary;
+        padding: 1.25em; /* 20/16 */
+
+        a {
+          text-decoration: none;
+          color: darken($accent-secondary, 20%);
+          text-transform: uppercase;
+          font-size: $font-size-small;
+        }
+
+        h1 {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+.partners-wrapper {
+  background-color: $background-secondary;
+  padding: 1.25em 0; /* 20/16 */
+}
+
+.galleries-navigation {
+  &.slidedown-menu {
+    background-color: $background-secondary;
+
+    li a {
+      white-space: normal;
+    }
+  }
+}
+
+.gallery-wrapper {
+  @include clearfix;
+
+  > a {
+    @include gallery(6 of 12);
+
+    @include breakpoint($screen-xs2) {
+      @include gallery(4 of 12);
+    }
+
+    @include breakpoint($screen-md1) {
+      @include gallery(3 of 12);
+    }
+
+    margin-bottom: gutter();
+
+    > img {
+      max-width: 100%;
+      height: auto;
+      border: 5px solid $background-secondary;
+    }
+  }
+}
+
+.galleries-wrapper {
+  @include clearfix;
+
+  > .gallery {
+    text-align: center;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include breakpoint($screen-xs1) {
+      max-width: auto;
+      @include gallery(6 of 12);
+    }
+
+    @include breakpoint($screen-xs2) {
+      @include gallery(4 of 12);
+    }
+
+    @include breakpoint($screen-sm) {
+      @include gallery(3 of 12);
+    }
+
+    margin-bottom: gutter();
+    position: relative;
+    border: 5px solid $background-secondary;
+
+    a {
+      text-decoration: none;
+    }
+
+    p {
+      position: absolute;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 100%;
+      height: auto;
+      padding: 0.625em 0; /* 10/16 */
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.pagination-wrapper {
+  text-align: center;
+
+  > .pagination {
+    margin-top: 0;
+  }
+}
+
+.years-wrapper {
+  text-align: center;
+
+  > span {
+    display: block;
+    margin: auto;
+    width: 96px;
+    height: 96px;
+    line-height: 96px;
+    font-size: $font-size-large;
+    background-color: $brand-secondary;
+    border-radius: 50%;
+    color: #fff;
+  }
+
+  > .awards-wrapper {
+    border-top: 2px solid $brand-secondary;
+    margin: 1em 0 3.125em; /* 50/16 */
+
+    @include breakpoint($screen-sm) {
+      border-top: none;
+      margin: 0;
+    }
+
+    &.odd {
+      > .award {
+        flex-direction: column;
+
+        @include breakpoint($screen-sm) {
+          > .award-image {
+            text-align: left;
+            border-left: 1px solid $brand-secondary;
+            border-right: 0;
+          }
+
+          > .award-details {
+            border-right: 1px solid $brand-secondary;
+            border-left: 0;
+          }
+        }
+      }
+    }
+
+    > .award {
+      display: flex;
+      flex-direction: column-reverse;
+
+      @include breakpoint($screen-sm) {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+
+        &:first-of-type {
+          > .award-image,
+          > .award-details {
+            padding-top: 3.125em; /* 25/16 */ /* 50/16 */
+          }
+        }
+
+        &:last-of-type {
+          > .award-image,
+          > .award-details {
+            padding-bottom: 3.125em; /* 25/16 */ /* 50/16 */
+          }
+        }
+      }
+
+      > .award-image {
+        padding: 1.5625em 0 0; /* 25/16 */
+
+        @include breakpoint($screen-sm) {
+          display: table-cell;
+          vertical-align: middle;
+          text-align: right;
+          padding: 1.5625em 3.125em; /* 25/16 */ /* 50/16 */
+          border-right: 1px solid $brand-secondary;
+        }
+
+        img {
+          border-radius: 50%;
+          border: 5px solid $gray-lighter;
+        }
+      }
+
+      > .award-details {
+        padding: 1.5625em 0 0; /* 25/16 */
+
+        @include breakpoint($screen-sm) {
+          display: table-cell;
+          vertical-align: middle;
+          text-align: left;
+          padding: 1.5625em 3.125em; /* 25/16 */ /* 50/16 */
+          border-left: 1px solid $brand-secondary;
+        }
+
+        > h1 {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+.testimonials-wrapper {
+  > .testimonial {
+    background-color: $background-primary;
+    padding: 1.25em; /* 20/16 */
+    position: relative;
+    margin-bottom: 3.125em; /* 50/16 */
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1.25em; /* 20/16 */
+      left: 1.25em; /* 20/16 */
+      border-width: 1.25em 1.25em 0 0; /* 20/16 */
+      border-style: solid;
+      border-color: $background-primary transparent;
+      display: block;
+      width: 0;
+    }
+
+    &.odd::after {
+      left: auto;
+      right: 1.25em; /* 20/16 */
+      border-width: 1.25em 0 0 1.25em; /* 20/16 */
+    }
+
+    > h1 {
+      @include clearfix;
+
+      margin-top: 0;
+      font-size: $font-size-large;
+
+      @include breakpoint($screen-xs2) {
+        font-size: $font-size-h2;
+      }
+
+      > span {
+        width: 100%;
+        display: block;
+
+        &:last-child {
+          font-size: ($font-size-h3 / $font-size-h2) + $font-unit;
+          margin-top: 1em;
+        }
+
+        @include breakpoint($screen-xs1) {
+          display: inline-block;
+          float: left;
+          width: 75%;
+
+          &:last-child {
+            float: none;
+            width: 25%;
+            padding-left: 20px;
+            text-align: right;
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.contact-map-wrapper {
+  width: 100%;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.mb-1 {
+  margin-bottom: 1em;
+}
+
+.room {
+  @include breakpoint($screen-xs2) {
+    background-color: $background-primary;
+  }
+}
+
+.room-popup {
+  @include breakpoint($screen-sm) {
+    background-color: $background-primary;
+  }
+}
+
+.room,
+.room-popup {
+  display: flex;
+  margin: 1em auto 0;
+  flex-direction: column;
+  text-align: center;
+  max-width: 620px;
+
+  @include breakpoint($screen-sm) {
+    max-width: none;
+    width: 49%;
+  }
+
+  @include breakpoint($screen-md1) {
+    width: 100%;
+    text-align: left;
+    flex-direction: row;
+    margin-top: 3.125em; /* 50/16 */
+  }
+
+  > div {
+    width: 100%;
+
+    @include breakpoint($screen-md1) {
+      width: 50%;
+    }
+  }
+
+  .room-image {
+    position: relative;
+
+    > .tooltip {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1;
+      font-size: $font-size-h1;
+
+      > .glyphicon {
+        border: 2px solid #fff;
+        border-radius: 50%;
+        background-color: #fff;
+      }
+    }
+
+    .room-image-icon {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(0,0,0,0.5);
+        border-radius: 50%;
+      }
+
+      .glyphicon {
+        color: #fff;
+        font-size: $font-size-h1;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .room-details {
+    padding: 1.25em; /* 20/16 */
+
+    .room-header {
+      margin-bottom: 1.25em; /* 20/16 */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      @include breakpoint($screen-xs2) {
+        justify-content: space-between;
+      }
+
+      > h1 {
+        margin: 0;
+        color: $brand-primary;
+        font-size: $font-size-h2;
+        width: 100%;
+
+        @include breakpoint($screen-xs2) {
+          width: auto;
+        }
+      }
+
+      > span {
+        padding: 0.3125em 0.625em;  /* 5/16 */ /* 10/16 */
+        background-color: $accent-secondary;
+        text-align: center;
+        font-weight: bold;
+        color: #fff;
+        margin-top: 10px;
+
+        @include breakpoint($screen-md1) {
+          margin-top: 0;
+        }
+      }
+    }
+
+    .text ul {
+      padding-left: 1em;
+    }
+  }
+}
+
+.room-popup {
+  @include breakpoint($screen-sm) {
+    max-width: 620px;
+    width: 100%;
+  }
+
+  @include breakpoint($screen-md1) {
+    max-width: none;
+  }
+
+  &[data-room="one-bed-economy"],
+  &[data-room="two-bed-economy"] {
+    .room-wrapper {
+      background-color: lighten($accent-secondary, 30%);
+    }
+  }
+
+  .room-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    margin-top: 1em;
+
+    @include breakpoint($screen-sm) {
+      padding: 1.25em; /* 20/16 */
+      margin-top: 0;
+    }
+
+    .button-book-room {
+      white-space: normal;
+
+      @include breakpoint($screen-sm) {
+        white-space: nowrap;
+      }
+    }
+
+    .room-buttons {
+      display: flex;
+      flex-wrap: wrap;
+
+      .btn-link {
+        margin: 0;
+        color: #222222;
+        padding: 0;
+        padding-right: 1em;
+        font-size: $font-size-h5;
+      }
+
+      .bookNext {
+        margin-left: auto;
+      }
+    }
+  }
+
+  .room-details {
+    padding: 0;
+    margin-bottom: 1.25em; /* 20/16 */
+
+    > .room-header {
+      margin-bottom: 1.25em; /* 20/16 */
+      display: flex;
+
+      > h1 {
+        font-size: $font-size-h3;
+        font-weight: bold;
+      }
+
+      .room-title {
+        margin: 0;
+        color: $brand-primary;
+        font-size: $font-size-h3;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        justify-content: center;
+
+        @include breakpoint($screen-xs2) {
+          justify-content: flex-start;
+        }
+      }
+
+      .glyphicon-ok {
+        display: none;
+        font-size: $font-size-h2;
+        color: $brand-success;
+
+        &.glyphicon-active {
+          display: block;
+          margin-top: 0.5em;
+
+          @include breakpoint($screen-xs2) {
+            margin-top: 0;
+            margin-left: 0.5em;
+          }
+        }
+      }
+    }
+
+    .text {
+      font-size: 0.85em;
+    }
+
+    .form-group {
+      input {
+        padding: $padding-base-vertical $padding-base-horizontal;
+      }
+
+      > label {
+        color: $brand-primary;
+        font-weight: normal;
+      }
+    }
+
+    .multiselectWrapper,
+    .dropdown {
+      button {
+        border-radius: 0;
+      }
+    }
+
+    .room-prices {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      flex-wrap: wrap;
+
+      h6 {
+        text-transform: uppercase;
+        padding: 10px;
+        flex: 1 1 100%;
+        color: #fff;
+        margin: 0;
+
+        @include breakpoint($screen-xs1) {
+          flex: 1 1 0%;
+        }
+
+        p {
+          font-size: $font-size-h1;
+          font-weight: bold;
+          margin: 0;
+
+          &.small {
+            display: block;
+            font-size: $font-size-h2;
+            color: #fff;
+          }
+        }
+
+        > div p {
+          display: inline-block;
+        }
+
+        .glyphicon {
+          font-size: 21px;
+          display: none;
+          color: darken($accent-secondary, 20%);
+
+          &.glyphicon-active {
+            display: block;
+          }
+        }
+      }
+
+      h6.pricePerDay {
+        background-color: $accent-secondary;
+      }
+
+      h6.priceTotal {
+        background-color: $accent-primary;
+      }
+    }
+
+    p.small {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.room {
+  &:nth-child(even) {
+    @include breakpoint($screen-sm) {
+      margin-left: 2%;
+    }
+
+    @include breakpoint($screen-md1) {
+      margin-left: 0;
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.question-group-wrapper {
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  small {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+.question {
+  padding: 5px 0;
+
+  h4 {
+    display: inline;
+  }
+
+  .slidedown-menu {
+    padding: 20px;
+    margin: 10px 0 20px 0;
+  }
+}
+
+a.ui-state-default {
+  color: $brand-primary!important;
+
+  &.ui-state-hover {
+    color: #fff!important;
+    border-color: $brand-primary!important;
+    background: $brand-primary!important;
+  }
+}
+
+td.last-day > a,
+td.first-day > a {
+  color: #fff!important;
+  border-color: $brand-primary!important;
+  background: $brand-primary!important;
+}
+
+td.booked-day > a,
+td.booked-day > span {
+  color: #fff!important;
+  border-color: $accent-primary!important;
+  background: $accent-primary!important;
+}
+
+strong.selected {
+  background-color: lighten($accent-secondary, 20%);
+  padding: 0.25em;
+  color: #000;
+}
+
+.book-label {
+  color: $brand-primary;
+  font-weight: normal;
+}
+
+.booking-wrapper {
+  margin: 2em 0;
+  width: 100%;
+
+  @include breakpoint($screen-sm) {
+    background-color: $background-primary;
+    padding: 2em;
+  }
+
+  > h3 {
+    color: #fff;
+    margin-top: 0;
+    padding: 0.5em;
+    text-transform: uppercase;
+    background-color: $brand-secondary;
+
+    span {
+      border-radius: 50%;
+      color: $brand-secondary;
+      background-color: #fff;
+      display: inline-flex;
+      width: 30px;
+      height: 30px;
+      justify-content: center;
+      align-items: center;
+      margin-right: 0.5em;
+      font-weight: bold;
+    }
+  }
+
+  .room-popup {
+    margin-top: 0;
+    margin-bottom: 2em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .book-date-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .booking-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include breakpoint($screen-sm) {
+      flex-direction: row;
+    }
+
+    .form-group {
+      margin-bottom: 0;
+
+      @include breakpoint($screen-sm) {
+        margin-right: 1em;
+      }
+
+      &:last-child {
+        margin-right: 0;
+        margin-top: 1em;
+
+        @include breakpoint($screen-sm) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+.rooms-summary {
+  margin: 2em 0;
+  width: 100%;
+  display: none;
+
+  @include breakpoint($screen-xs2) {
+    background-color: $background-primary;
+    padding: 2em;
+  }
+
+  &.rooms-summary-active {
+    display: block;
+  }
+
+  caption {
+    font-size: $font-size-h3;
+    color: $brand-primary;
+
+    p {
+      display: flex;
+      align-items: center;
+    }
+
+    span {
+      font-size: $font-size-h2;
+      color: $brand-success;
+      margin: 0 0.25em;
+    }
+  }
+
+  table {
+    margin: 0;
+
+    .total-price {
+      color: $brand-primary;
+    }
+  }
+}
+
+.totalAmount {
+  h3 {
+    margin-top: 0;
+    font-weight: bold;
+  }
+
+  p.text-primary {
+    font-size: $font-size-h2;
+    font-weight: bold;
+  }
+}
+
+.payButton {
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 1em 0;
+
+  @include breakpoint($screen-xs1) {
+    margin: 0;
+  }
+
+  span {
+    display: block;
+    font-size: $font-size-h2;
+  }
+}
+
+.booking-details {
+  @include clearfix;
+}
+
+.booking-summary {
+  > div {
+    margin: 2em 0;
+    width: 100%;
+    background-color: #fff;
+
+    @include breakpoint($screen-sm) {
+      padding: 2em;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      margin: 0;
+
+      .total-price {
+        color: $brand-primary;
+      }
+    }
+  }
+}
+
+.booking-payment {
+  margin-top: 2em;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @include breakpoint($screen-sm) {
+    padding: 2em;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  button {
+    @include breakpoint($screen-sm) {
+      margin: 0 1em;
+    }
+  }
+
+  img {
+    order: 1;
+    margin: 10px 0;
+
+    @include breakpoint($screen-sm) {
+      order: unset;
+      margin: 0;
+    }
+  }
+}
+
+.booking-info {
+  margin: 2em auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 620px;
+
+  @include breakpoint($screen-sm) {
+    background-color: #fff;
+    padding: 2em;
+  }
+
+  @include breakpoint($screen-md1) {
+    max-width: none;
+  }
+
+  p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+
+    @include breakpoint($screen-xs1) {
+      font-size: $font-size-base;
+    }
+
+    @include breakpoint($screen-md1) {
+      width: auto;
+      font-size: 14px;
+    }
+
+    @include breakpoint($screen-md2) {
+      font-size: $font-size-base;
+    }
+
+    span {
+      font-size: $font-size-h1;
+      color: $brand-success;
+      margin-right: 0.25em;
+    }
+
+    strong {
+      margin-left: auto;
+
+      @include breakpoint($screen-md1) {
+        margin-left: 0.75em;
+      }
+    }
+  }
+}
+
+.bookButtons {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  .bookNext,
+  .bookPrev {
+    border-radius: 0;
+    border: 0;
+
+    > .glyphicon {
+      color: #fff;
+      font-size: 18px;
+    }
+  }
+
+  .bookNext {
+    margin-left: auto;
+
+    > .glyphicon {
+      padding-left: 0.5em;
+    }
+  }
+
+  .bookPrev {
+    background-color: $brand-secondary;
+    margin-right: auto;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken($brand-secondary, 10%);
+    }
+
+    > .glyphicon {
+      padding-right: 0.5em;
+    }
+  }
+}
+
+.booking-home-wrapper {
+  display: flex;
+  position: relative;
+  justify-content: center;
+
+  .booking-input-field {
+    padding: 0 1px;
+    position: relative;
+
+    .glyphicon {
+      color: #777;
+      position: absolute;
+      padding: 8px 0 0 15px;
+      pointer-events: none;
+      left: 0;
+      font-size: 18px;
+    }
+
+    input {
+      padding-left: 35px;
+      border-radius: 0;
+    }
+  }
+
+  #booking-step1 {
+    margin-left: 1px;
+    border-radius: 0;
+    background-color: $accent-primary;
+    border: 0;
+  }
+}
+
+#nav-book {
+  width: 100%;
+
+  > ul {
+    list-style-type: none;
+    margin: 0 0 2em;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 0;
+
+    @include breakpoint($screen-sm) {
+      flex-wrap: nowrap;
+    }
+
+    > span {
+      cursor: default;
+    }
+
+    > .step {
+      flex: 1 1 100%;
+      color: $gray-light;
+      background-color: $gray-lighter;
+      padding: 1em;
+      margin-bottom: 1px;
+      text-decoration: none;
+      border: 0;
+      border-bottom: 1px solid darken($gray-lighter, 10%);
+      border-radius: 0;
+      position: relative;
+
+      @include breakpoint($screen-xs1) {
+        flex: 1 1 calc(50% - 1px);
+        margin-right: 1px;
+        border-right: 1px solid darken($gray-lighter, 10%);
+
+        &:nth-child(2) {
+          border-right: 0;
+          margin-right: 0;
+        }
+
+        &:nth-child(3) {
+          border-bottom: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      @include breakpoint($screen-sm) {
+        flex: 1 1 25%;
+        border-bottom: 0;
+        margin-bottom: 0;
+
+        &:nth-child(2) {
+          margin-right: 1px;
+          border-right: 1px solid darken($gray-lighter, 10%);
+        }
+      }
+
+      &:last-child {
+        border-right: 0;
+        border-bottom: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+      }
+
+      &.step-active {
+        color: #fff;
+        background-color: $brand-primary;
+        border: 1px solid $brand-primary;
+
+        &::after {
+          position: absolute;
+          display: inline-block;
+          bottom: -6px;
+          left: 50%;
+          right: auto;
+          margin-left: -6px;
+          border-right: 6px solid transparent;
+          border-top: 6px solid $brand-primary;
+          border-left: 6px solid transparent;
+          content: none;
+
+          @include breakpoint($screen-sm) {
+            content: '';
+          }
+        }
+      }
+
+      &.step-visited {
+        color: $brand-primary;
+        border: 1px solid $brand-primary;
+      }
+    }
+  }
+}
+
+.dropdown-guests {
+  button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .dropdown-menu {
+    padding: 1em;
+    background-color: #fff;
+  }
+
+  .guest-wrapper {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .help-block {
+      display: inline;
+    }
+
+    .input-guest {
+      display: flex;
+
+      input {
+        border-radius: 0;
+        width: 50px;
+        text-align: center;
+        background-color: #fff;
+        border-right: 0;
+        border-left: 0;
+      }
+
+      button {
+        border-radius: 0;
+        border-color: $input-border;
+        background-color: #efefef;
+        color: #838383;
+        height: $input-height-base;
+      }
+
+      .glyphicon {
+        margin: 0;
+      }
+    }
+  }
+}
+
+p.vt360 {
+  height: calc(100vh - 100px) !important;
+}
+
+p.book-warning {
+  background-color: $background-secondary;
+  color: $brand-primary;
+  border: 1px solid $background-primary;
+  margin: 0;
+  text-align: center;
+  padding: $padding-base-vertical $padding-base-horizontal;
+  border-radius: $border-radius-base;
+}
+
+#countdown {
+  background-color: #333;
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+
+  > p {
+      font-size: $font-size-h4;
+      text-transform: uppercase;
+
+      @include breakpoint($screen-xs2) {
+          font-size: $font-size-h3;
+      }
+
+      @include breakpoint($screen-md1) {
+          font-size: $font-size-h2;
+      }
+  }
+
+  > div {
+      display: inline-block;
+      width: 3.75em; /* 60/16 */
+      margin: 0 0.3125em; /* 5/16 */
+
+      @include breakpoint($screen-xs2) {
+          width: 5em; /* 80/16 */
+          margin: 0 0.625em; /* 10/16 */
+      }
+
+      @include breakpoint($screen-md1) {
+          width: 6.25em; /* 100/16 */
+          margin: 0 0.9375em; /* 15/16 */
+      }
+
+      > span {
+          display: block;
+          border: 3px solid #fff;
+          font-size: $font-size-h2;
+          padding: pxEmFont(5px, $font-size-h2) 0;
+          font-weight: bold;
+
+          @include breakpoint($screen-xs2) {
+              font-size: 2.5em; /* 40/16 */
+              padding: pxEmFont(5px, 2.5em) 0;
+          }
+
+          @include breakpoint($screen-md1) {
+              font-size: 3.5em; /* 56/16 */
+              padding: pxEmFont(10px, 3.5em) 0;
+          }
+
+          @include breakpoint($screen-lg1) {
+              padding: pxEmFont(20px, 3.75em) 0;
+          }
+
+          &:last-child {
+              font-weight: normal;
+              font-size: $font-size-base;
+              border: none;
+
+              @include breakpoint($screen-xs2) {
+                  font-size: $font-size-large;
+              }
+          }
+      }
+  }
+}

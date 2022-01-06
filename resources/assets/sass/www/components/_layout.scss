@@ -1,0 +1,74 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0 0 10em; /* bottom = footer height */ /* 160/16 */
+
+  > footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #ddd;
+    color: $gray;
+    height: 10em; /* 160/16 */
+    width: 100%;
+    border-top: 3px solid $brand-secondary;
+  }
+
+  > header {
+    position: relative;
+
+    .bookings-home-overlay {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      padding: 1rem;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.3);
+
+      &.loaded {
+        display: block;
+      }
+
+      .bookings-home-overlay-form {
+        display: inline-block;
+        position: relative;
+      }
+    }
+  }
+}
+
+.two-columns {
+  @include clearfix;
+
+  > .left-column {
+    @include breakpoint($screen-sm) {
+      @include span(4);
+    }
+
+    @include breakpoint($screen-md1) {
+      @include span(3);
+    }
+  }
+
+  > .right-column {
+    margin-top: gutter();
+
+    @include breakpoint($screen-sm) {
+      margin-top: 0;
+
+      @include span(8 last);
+    }
+
+    @include breakpoint($screen-md1) {
+      @include span(9 last);
+    }
+  }
+}

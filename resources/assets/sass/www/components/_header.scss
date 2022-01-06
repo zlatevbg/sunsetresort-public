@@ -1,0 +1,269 @@
+body.nav-open {
+  #mobile-nav {
+    .glyphicon-remove {
+      display: inline-block;
+    }
+
+    .glyphicon-menu-hamburger {
+      display: none;
+    }
+  }
+}
+
+#header {
+  @include clearfix;
+
+  background-color: $brand-primary;
+
+  @include breakpoint($screen-lg1) {
+    padding: 10px 0; /* 10/16 */
+    background-color: transparent;
+  }
+
+  .logo-nav {
+    float: left;
+
+    @include breakpoint($screen-lg1) {
+      padding-left: 10px; /* 10/16 */
+    }
+
+    > a {
+      margin: 10px;
+      display: block;
+      background: url($imgPath + 'logo-mobile.png') no-repeat center center;
+      width: 60px;
+      height: 40px;
+
+      @include breakpoint($screen-lg1) {
+        margin: 0;
+        background-image: url($imgPath + 'logo-nav.png');
+        width: 89px;
+        height: 60px;
+      }
+    }
+  }
+
+  #mobile-nav {
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 10px;
+    float: right;
+    height: 60px;
+    line-height: 36px;
+    border-left: 1px solid darken($brand-primary, 5%);
+
+    @include breakpoint($screen-lg1) {
+      display: none;
+    }
+
+    &:hover,
+    &.active {
+      background-color: darken($brand-primary, 5%);
+    }
+
+    > span {
+      display: none;
+      vertical-align: middle;
+      font-size: $font-size-h2;
+
+      @include breakpoint($screen-xs1) {
+        display: inline-block;
+      }
+
+      @include breakpoint($screen-lg1) {
+        display: none;
+      }
+    }
+
+    .glyphicon {
+      display: inline-block;
+      font-size: $font-size-h2;
+
+      @include breakpoint($screen-xs1) {
+        margin-left: 5px;
+      }
+    }
+
+    .glyphicon-remove {
+      display: none;
+    }
+  }
+
+  .facebook-nav {
+    text-transform: uppercase;
+    padding-left: 0;
+    float: right;
+    border-left: 1px solid darken($brand-primary, 5%);
+
+    @include breakpoint($screen-lg1) {
+      text-transform: none;
+      padding: 11px 1.25em 0 0; /* 20/16 */
+      border: none;
+    }
+
+    > a {
+      border-radius: 0;
+      border-color: transparent;
+      background-color: transparent;
+      padding: 10px;
+      height: 60px;
+      line-height: 36px;
+
+      @include breakpoint($screen-lg1) {
+        border-color: darken(#45619d, 10%);
+        background-color: #45619d;
+        font-size: 0.875em; /* 14/16 */
+        padding: 0.375em 0.75em;
+        height: 38px;
+        line-height: 1.375;
+      }
+
+      &:hover {
+        text-decoration: none;
+        background-color: darken(#45619d, 5%);
+        border-right: 1px solid darken($brand-primary, 5%);
+
+        @include breakpoint($screen-lg1) {
+          border-color: darken(#45619d, 10%);
+        }
+      }
+
+      span {
+        display: none;
+
+        @include breakpoint($screen-xs2) {
+          display: inline;
+        }
+      }
+
+      > img {
+        position: relative;
+        top: -1px;
+
+        @include breakpoint($screen-xs2) {
+          padding-left: 8px;
+        }
+
+        @include breakpoint($screen-lg1) {
+          position: static;
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+
+  .languages-nav {
+    margin: 0;
+    list-style-type: none;
+    text-transform: uppercase;
+    float: right;
+    border-left: 1px solid darken($brand-primary, 5%);
+    position: relative;
+    padding-left: 0;
+
+    @include breakpoint($screen-lg1) {
+      text-transform: none;
+      padding: 11px 1.25em 0 0; /* 20/16 */
+      border: none;
+    }
+
+    span {
+      display: none;
+
+      @include breakpoint($screen-xs1) {
+        display: inline-block;
+      }
+    }
+
+    .sub-text {
+      display: none;
+
+      @include breakpoint($screen-lg1) {
+        display: inline;
+      }
+    }
+
+    > li {
+      position: static;
+
+      @include breakpoint($screen-lg1) {
+        position: relative;
+      }
+
+      > a {
+        box-shadow: none;
+        border-radius: 0;
+        border-color: transparent;
+        height: 60px;
+        line-height: 36px;
+        padding: 10px;
+        background: transparent url($imgPath + 'languages-icon.png') no-repeat center center;
+        width: 65px;
+
+        @include breakpoint($screen-xs1) {
+          background-image: none;
+          width: auto;
+        }
+
+        @include breakpoint($screen-lg1) {
+          border-color: darken(#eee, 10%);
+          background-color: #eee;
+          color: $gray;
+          height: 38px;
+          padding: 0.375em 0.75em;
+          line-height: 1.375;
+        }
+
+        &:hover {
+          text-decoration: none;
+          background-color: darken($brand-primary, 5%);
+
+          @include breakpoint($screen-lg1) {
+            background-color: darken(#eee, 5%);
+          }
+        }
+
+        > .caret {
+          border-width: $caret-width-large $caret-width-large 0;
+        }
+      }
+
+      > .dropdown-menu {
+        a {
+          padding: 0.3125em 0.625em 0.3125em 0.3125em; /* 10/16 */ /* 5/16 */
+        }
+      }
+    }
+  }
+
+  .phone-nav {
+    text-transform: uppercase;
+    padding-left: 0;
+    float: right;
+    border-left: 1px solid darken($brand-primary, 5%);
+
+    @include breakpoint($screen-lg1) {
+      display: none;
+    }
+
+    > a {
+      border-radius: 0;
+      border-color: transparent;
+      background-color: transparent;
+      padding: 10px;
+      height: 60px;
+      line-height: 36px;
+      font-size: $font-size-h2;
+
+      &:hover {
+        text-decoration: none;
+        background-color: darken($brand-primary, 5%);
+      }
+    }
+
+    span {
+      vertical-align: middle;
+    }
+  }
+}

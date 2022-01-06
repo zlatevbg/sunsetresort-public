@@ -1,0 +1,151 @@
+{
+  "styles": {
+    "cms-main": {
+      "src": "./resources/assets/sass/cms/main.scss",
+      "dst": "./public/css/cms/",
+      "name": "main.css",
+      "watch": "./resources/assets/sass/cms/**/*.scss"
+    },
+    "www-main": {
+      "src": "./resources/assets/sass/www/main.scss",
+      "dst": "./public/css/www/",
+      "name": "main.css",
+      "watch": "./resources/assets/sass/www/**/*.scss"
+    },
+    "guests-main": {
+      "src": "./resources/assets/sass/guests/main.scss",
+      "dst": "./public/css/guests/",
+      "name": "main.css",
+      "watch": "./resources/assets/sass/guests/**/*.scss"
+    }
+  },
+  "scripts": {
+    "cms-main": {
+      "src": "./resources/assets/js/cms/main.js",
+      "dst": "./public/js/cms/",
+      "name": "main.js",
+      "watch": [
+        "./resources/assets/js/cms/**/*.js",
+        "!./resources/assets/js/cms/vendor/leaflet.js",
+        "!./resources/assets/js/cms/vendor/leaflet.extra-markers.js",
+        "!./resources/assets/js/cms/vendor/fine-uploader.js",
+        "!./resources/assets/js/cms/vendor/ckfinder-3.2.0.js",
+        "!./resources/assets/js/cms/vendor/plugins/jquery.multiselect.js",
+        "!./resources/assets/js/cms/vendor/plugins/jquery.qtip.js",
+        "!./resources/assets/js/cms/vendor/jquery-ui.js"
+      ]
+    },
+    "cms-leaflet": {
+      "src": "./resources/assets/js/cms/vendor/leaflet.js",
+      "dst": "./public/js/cms/vendor/",
+      "name": "leaflet.js",
+      "watch": "./resources/assets/js/cms/vendor/leaflet.js"
+    },
+    "cms-leaflet.extra-markers": {
+      "src": "./resources/assets/js/cms/vendor/leaflet.extra-markers.js",
+      "dst": "./public/js/cms/vendor/",
+      "name": "leaflet.extra-markers.js",
+      "watch": "./resources/assets/js/cms/vendor/leaflet.extra-markers.js"
+    },
+    "cms-fine-uploader": {
+      "src": "./resources/assets/js/cms/vendor/fine-uploader.js",
+      "dst": "./public/js/cms/vendor/",
+      "name": "fine-uploader.js",
+      "watch": "./resources/assets/js/cms/vendor/fine-uploader.js"
+    },
+    "cms-ckfinder-3.2.0": {
+      "src": "./resources/assets/js/cms/vendor/ckfinder-3.2.0.js",
+      "dst": "./public/js/cms/vendor/ckfinder/",
+      "name": "ckfinder.js",
+      "watch": "./resources/assets/js/cms/vendor/ckfinder-3.2.0.js"
+    },
+    "cms-jquery.multiselect": {
+      "src": "./resources/assets/js/cms/vendor/plugins/jquery.multiselect.js",
+      "dst": "./public/js/cms/vendor/",
+      "name": "jquery.multiselect.js",
+      "watch": "./resources/assets/js/cms/vendor/plugins/jquery.multiselect.js"
+    },
+    "cms-jquery-ui": {
+      "src": "./resources/assets/js/cms/vendor/jquery-ui.js",
+      "dst": "./public/js/cms/vendor/",
+      "name": "jquery-ui.js",
+      "watch": "./resources/assets/js/cms/vendor/jquery-ui.js"
+    },
+    "www-main": {
+      "src": "./resources/assets/js/www/main.js",
+      "dst": "./public/js/www/",
+      "name": "main.js",
+      "watch": [
+        "./resources/assets/js/www/**/*.js",
+        "!./resources/assets/js/www/vendor/leaflet.js",
+        "!./resources/assets/js/www/vendor/leaflet.extra-markers.js",
+        "!./resources/assets/js/www/vendor/plugins/jquery.multiselect.js"
+      ]
+    },
+    "www-leaflet": {
+      "src": "./resources/assets/js/www/vendor/leaflet.js",
+      "dst": "./public/js/www/vendor/",
+      "name": "leaflet.js",
+      "watch": "./resources/assets/js/www/vendor/leaflet.js"
+    },
+    "www-leaflet.extra-markers": {
+      "src": "./resources/assets/js/www/vendor/leaflet.extra-markers.js",
+      "dst": "./public/js/www/vendor/",
+      "name": "leaflet.extra-markers.js",
+      "watch": "./resources/assets/js/www/vendor/leaflet.extra-markers.js"
+    },
+    "www-jquery.multiselect": {
+      "src": "./resources/assets/js/www/vendor/plugins/jquery.multiselect.js",
+      "dst": "./public/js/www/vendor/",
+      "name": "jquery.multiselect.js",
+      "watch": "./resources/assets/js/www/vendor/plugins/jquery.multiselect.js"
+    },
+    "www-jquery.qtip": {
+      "src": "./resources/assets/js/www/vendor/plugins/jquery.qtip.js",
+      "dst": "./public/js/www/vendor/",
+      "name": "jquery.qtip.js",
+      "watch": "./resources/assets/js/www/vendor/plugins/jquery.qtip.js"
+    },
+    "guests-main": {
+      "src": "./resources/assets/js/guests/main.js",
+      "dst": "./public/js/guests/",
+      "name": "main.js",
+      "watch": [
+        "./resources/assets/js/guests/**/*.js",
+        "!./resources/assets/js/guests/vendor/leaflet.js",
+        "!./resources/assets/js/guests/vendor/leaflet.extra-markers.js"
+      ]
+    },
+    "guests-leaflet": {
+      "src": "./resources/assets/js/guests/vendor/leaflet.js",
+      "dst": "./public/js/guests/vendor/",
+      "name": "leaflet.js",
+      "watch": "./resources/assets/js/guests/vendor/leaflet.js"
+    },
+    "guests-leaflet.extra-markers": {
+      "src": "./resources/assets/js/guests/vendor/leaflet.extra-markers.js",
+      "dst": "./public/js/guests/vendor/",
+      "name": "leaflet.extra-markers.js",
+      "watch": "./resources/assets/js/guests/vendor/leaflet.extra-markers.js"
+    },
+    "guests-jquery.qtip": {
+      "src": "./resources/assets/js/guests/vendor/plugins/jquery.qtip.js",
+      "dst": "./public/js/guests/vendor/",
+      "name": "jquery.qtip.js",
+      "watch": "./resources/assets/js/guests/vendor/plugins/jquery.qtip.js"
+    }
+  },
+  "images": {
+    "root": {
+      "src": "./public/img/**/*",
+      "dst": "./public/img/",
+      "watch": "./public/img/**/*"
+    }
+  },
+  "knownOptions": {
+    "default": {
+      "production": false,
+      "skipcache": false
+    }
+  }
+}

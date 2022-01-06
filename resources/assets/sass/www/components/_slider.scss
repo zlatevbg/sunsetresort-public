@@ -1,0 +1,236 @@
+.slider-pro {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.sp-buttons {
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+
+  > .sp-button {
+    width: 12px;
+    height: 12px;
+    margin: 6px;
+    border-color: #fff;
+    opacity: 0.5;
+    background-color: rgba(149, 149, 149, 0.5);
+
+    &:hover {
+      opacity: 1;
+      border-color: #00fcff;
+    }
+
+    &:active {
+      border-color: #000;
+      opacity: 0.5;
+    }
+
+    &.sp-selected-button {
+      opacity: 1;
+      background-color: rgba(149, 149, 149, 0.5);
+
+      &:active {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.sp-horizontal {
+  .sp-arrows {
+    margin-top: -25px;
+
+    > .sp-arrow {
+      width: 15px;
+      height: 50px;
+
+      &::before,
+      &::after {
+        border: 1px solid #959595;
+        background-color: rgba(255, 255, 255, 1);
+      }
+
+      &::before {
+        border-bottom: none;
+      }
+
+      &::after {
+        border-top: none;
+      }
+
+      &:hover {
+        &::before,
+        &::after {
+          background-color: rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+  }
+
+  .sp-previous-arrow {
+    left: 25px;
+  }
+
+  .sp-next-arrow {
+    right: 25px;
+  }
+}
+
+#banner-view,
+#banner-promotion,
+#banner-aquapark,
+#banner-easter,
+#banner-new-year,
+#banner-summer,
+#banner-weekend {
+  .sp-layer {
+    color: #fff;
+    padding: 0.625em; /* 10/16 */
+    background-color: rgba(0, 0, 0, 0.1);
+    right: 10px !important;
+    left: 10px;
+
+    @include breakpoint($screen-xs1) {
+      border: 0.5em solid #fff; /* 8/16 */
+      padding: 0.9375em 1.25em; /* 15/16 */ /* 20/16 */
+    }
+
+    @include breakpoint($screen-xs2) {
+      left: auto;
+      right: 80px !important;
+    }
+
+    p {
+      display: none;
+
+      @include breakpoint($screen-xs1) {
+        display: block;
+      }
+    }
+  }
+
+  h1 {
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    margin: 20px 0 0;
+    text-align: center;
+    font-size: $font-size-large;
+
+    @include breakpoint($screen-xs1) {
+      margin: 0;
+    }
+
+    @include breakpoint($screen-sm) {
+      font-size: $font-size-h2;
+    }
+
+    @include breakpoint($screen-md1) {
+      font-size: $font-size-h1;
+    }
+  }
+
+  hr {
+    margin: 2px 0 0.3125em; /* 5/16 */
+    border-top: 2px solid #fff;
+  }
+
+  p {
+    font-size: 0.6875em; /* 11/16 */
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    letter-spacing: 0.03em;
+  }
+
+  .btn {
+    margin-top: 0.625em; /* 10/16 */
+    text-transform: uppercase;
+
+    @include button-variant(#fff, #efb63b, #efb63b); // default
+  }
+}
+
+#banner-promotion {
+  /* .sp-layer {
+    color: #363636;
+  }
+
+  h1 {
+    color: #363636;
+  } */
+
+  .btn {
+    @include button-variant(#fff, #df951c, #df951c);
+  }
+}
+
+#banner-aquapark,
+#banner-view {
+  .btn {
+    @include button-variant(#fff, #3b89fa, #3b89fa);
+  }
+}
+
+#banner-easter {
+  .btn {
+    @include button-variant(#fff, #efb63b, #efb63b);
+  }
+}
+
+#banner-new-year {
+  .btn {
+    @include button-variant(#fff, #f03767, #f03767);
+  }
+}
+
+#banner-summer {
+  .btn {
+    @include button-variant(#fff, #ab69cd, #ab69cd);
+  }
+}
+
+#banner-weekend {
+  .btn {
+    @include button-variant(#fff, #05b198, #05b198);
+  }
+}
+
+.slider-pro {
+  .jw-title {
+    font-size: $font-size-base;
+    background-image: none;
+    height: auto;
+    padding: 0 !important;
+  }
+
+  .jw-title-primary,
+  .jw-title-secondary {
+    text-align: center;
+    min-height: 0;
+    overflow-x: visible;
+  }
+
+  .jw-title-primary {
+    display: none;
+
+    @include breakpoint($screen-sm) {
+      display: block;
+      padding: 30px 0 0;
+      text-transform: uppercase;
+      font-size: $font-size-h2;
+    }
+
+    @include breakpoint($screen-md1) {
+      padding: 50px 0 0;
+      font-size: $font-size-h1;
+    }
+  }
+
+  .jw-title-secondary {
+    font-size: $font-size-large;
+    margin-top: 10px;
+    padding: 0;
+  }
+}

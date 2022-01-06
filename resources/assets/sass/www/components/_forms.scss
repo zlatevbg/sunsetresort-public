@@ -1,0 +1,182 @@
+.has-addon-feedback .form-control-feedback {
+  right: auto;
+  display: inline-block;
+  margin-left: -$input-height-base;
+}
+
+.form-group-left {
+  @include span(12);
+
+  @include breakpoint($screen-sm) {
+    @include span(6);
+  }
+}
+
+.form-group-right {
+  @include span(12 last);
+
+  @include breakpoint($screen-sm) {
+    @include span(6 last);
+  }
+}
+
+html .form-horizontal {
+  .checkbox-inline {
+    padding-top: 0;
+  }
+}
+
+.js-default-option {
+  color: $input-color-placeholder;
+
+  > option {
+    color: $gray;
+  }
+}
+
+.minStayLabel label {
+  font-size: $font-size-small;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 3.125em; /* 50/16 */
+}
+
+#subscribe-form {
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  .input-group {
+    display: block;
+
+    @include breakpoint($screen-md1) {
+      display: inline-table;
+    }
+  }
+
+  input {
+    text-align: center;
+
+    @include breakpoint($screen-md1) {
+      text-align: left;
+    }
+  }
+
+  .btn {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 5px;
+
+    @include breakpoint($screen-md1) {
+      width: auto;
+      margin-left: -1px;
+      margin-top: 0;
+    }
+  }
+}
+
+.form-inline {
+  display: inline-block;
+
+  .form-control,
+  .btn {
+    border-radius: 0;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .input-group .input-group-btn {
+    width: 1%;
+  }
+}
+
+.input-left {
+  @include span(6);
+}
+
+.input-right {
+  @include span(6 last);
+}
+
+.input-book-view {
+  @include span(12);
+
+  > label {
+    text-align: left;
+    width: 100%;
+  }
+
+  @include breakpoint($screen-xs2) {
+    @include span(3);
+  }
+}
+
+.input-book-meal {
+  @include span(12);
+
+  > label {
+    text-align: left;
+    width: 100%;
+  }
+
+  @include breakpoint($screen-xs2) {
+    @include span(5);
+  }
+}
+
+.input-book-guests {
+  @include span(12 last);
+
+  > label {
+    text-align: left;
+    width: 100%;
+  }
+
+  @include breakpoint($screen-xs2) {
+    @include span(4 last);
+  }
+}
+
+.input-25 {
+  @include breakpoint($screen-xs2) {
+    @include span(6);
+
+    &:nth-child(2n) {
+      @include last;
+    }
+  }
+
+  @include breakpoint($screen-lg1) {
+    @include span(3);
+
+    &:nth-child(2n) {
+      @include span(3);
+    }
+
+    &:last-child {
+      @include span(3 last);
+    }
+  }
+}
+
+.g-recaptcha {
+  margin-bottom: 1em;
+}
+
+.g-recaptcha > div {
+  margin: 0 auto $form-group-margin-bottom;
+}
+
+.form-control-static {
+  label {
+    margin-bottom: 0;
+
+    input {
+      margin-right: 0.5em;
+    }
+  }
+}
